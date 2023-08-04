@@ -1,2 +1,2 @@
 # Bachelor_Thesis
-My Bachelor Thesis project code
+Lazar Randjelovic Bachelor Thesis project code
