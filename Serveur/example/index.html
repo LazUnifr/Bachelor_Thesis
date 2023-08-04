@@ -1,0 +1,3546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Streetlights API 1.0.0 documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/atom-one-dark.min.css" />
+  
+</head>
+<body>
+  <div class="relative md:flex lg:flex xl:flex">
+    
+
+<input id="burger-menu" type="checkbox" />
+<label for="burger-menu" class="shadow">
+  <div class="wrapper">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</label>
+
+<div class="sidebar-panel fixed top-0 left-0 bottom-0 w-64 bg-gray-200 font-sans pt-8 pr-4 pb-4 pl-4">
+  <div class="sidebar-panel__content">
+    
+      <h1 class="text-2xl font-thin">
+        Streetlights API 1.0.0
+      </h1>
+    
+    <ul class="text-sm mt-10 list-reset mt-2">
+      <li class="mb-3">
+        <a class="js-menu-item text-gray-700 no-underline" href="#introduction">Introduction</a>
+      </li>
+      
+        <li class="mb-3">
+          <a class="js-menu-item text-gray-700 no-underline" href="#servers">Servers</a>
+        </li>
+      
+    </ul>
+
+    
+      <h2 class="text-xs uppercase text-gray-500 mt-10 mb-4 font-thin">Operations</h2>
+      <ul class="text-sm list-reset mt-2">
+        <!-- With tags in sidebar -->
+        
+          <!--Without tags in sidebar-->
+          
+            <li>
+              
+                <a class="js-menu-item flex break-words no-underline text-gray-700 mt-8 sm:mt-8 md:mt-3" href="#operation-publish-smartylighting/streetlights/1/0/event/{streetlightId}/lighting/measured">
+                  <span class="bg-blue-600 font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded" style="height: 21px;font-size: 11px;" title="Publish">
+                    Pub
+                  </span>
+                  
+                    <span style="padding-top: 2px;">
+                      Inform about environmental lighting conditions of a particular streetlight.
+                    </span>
+                  
+                </a>
+              
+
+              
+              </a>
+            </li>
+          
+            <li>
+              
+
+              
+                <a class="js-menu-item flex break-words no-underline text-gray-700 mt-8 sm:mt-8 md:mt-3" href="#operation-subscribe-smartylighting/streetlights/1/0/action/{streetlightId}/turn/on">
+                  <span class="bg-green-600 font-bold no-underline text-white uppercase p-1 mr-2 rounded" style="height: 21px;font-size: 11px;" title="Subscribe">
+                    Sub
+                  </span>
+                  
+                    <div style="display:inline-block;">
+                      
+<span class="string-chunk" style="padding-top: 2px;">smartylighting/streetlights/1/0/action/{streetlightId}/turn/on</span>
+
+                    </div>
+                  
+                </a>
+              
+              </a>
+            </li>
+          
+            <li>
+              
+
+              
+                <a class="js-menu-item flex break-words no-underline text-gray-700 mt-8 sm:mt-8 md:mt-3" href="#operation-subscribe-smartylighting/streetlights/1/0/action/{streetlightId}/turn/off">
+                  <span class="bg-green-600 font-bold no-underline text-white uppercase p-1 mr-2 rounded" style="height: 21px;font-size: 11px;" title="Subscribe">
+                    Sub
+                  </span>
+                  
+                    <div style="display:inline-block;">
+                      
+<span class="string-chunk" style="padding-top: 2px;">smartylighting/streetlights/1/0/action/{streetlightId}/turn/off</span>
+
+                    </div>
+                  
+                </a>
+              
+              </a>
+            </li>
+          
+            <li>
+              
+
+              
+                <a class="js-menu-item flex break-words no-underline text-gray-700 mt-8 sm:mt-8 md:mt-3" href="#operation-subscribe-smartylighting/streetlights/1/0/action/{streetlightId}/dim">
+                  <span class="bg-green-600 font-bold no-underline text-white uppercase p-1 mr-2 rounded" style="height: 21px;font-size: 11px;" title="Subscribe">
+                    Sub
+                  </span>
+                  
+                    <div style="display:inline-block;">
+                      
+<span class="string-chunk" style="padding-top: 2px;">smartylighting/streetlights/1/0/action/{streetlightId}/dim</span>
+
+                    </div>
+                  
+                </a>
+              
+              </a>
+            </li>
+          
+        
+      </ul>
+
+      <h2 class="text-xs uppercase text-gray-500 mt-10 mb-4 font-thin">Messages</h2>
+      <ul class="text-sm list-reset mt-2">
+        
+          <a class="js-menu-item flex break-words no-underline text-gray-700 mt-8 sm:mt-8 md:mt-3" href="#message-lightMeasured">
+            <div style="display:inline-block;">
+              
+<span class="string-chunk" style="padding-top: 2px;">lightMeasured</span>
+
+            </div>
+          </a>
+        
+          <a class="js-menu-item flex break-words no-underline text-gray-700 mt-8 sm:mt-8 md:mt-3" href="#message-turnOnOff">
+            <div style="display:inline-block;">
+              
+<span class="string-chunk" style="padding-top: 2px;">turnOnOff</span>
+
+            </div>
+          </a>
+        
+          <a class="js-menu-item flex break-words no-underline text-gray-700 mt-8 sm:mt-8 md:mt-3" href="#message-dimLight">
+            <div style="display:inline-block;">
+              
+<span class="string-chunk" style="padding-top: 2px;">dimLight</span>
+
+            </div>
+          </a>
+        
+      </ul>
+    
+  </div>
+</div>
+    <div class="content-panel flex-1 leading-loose z-10">
+      <div class="center-block p-8">
+  <a name="introduction"></a>
+  <h1>Streetlights API 1.0.0</h1>
+  <div class="leading-normal mb-4">
+    
+    
+      <a class="border border-solid border-orange-300 hover:bg-orange-300 hover:text-orange-600 font-bold no-underline text-orange-500 text-xs uppercase rounded mr-2 px-3 py-1"
+        href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0</a>
+    
+  </div>
+
+  <div class="markdown">
+    <p>The Smartylighting Streetlights API allows you to remotely manage the city lights.</p>
+<h3>Check out its awesome features:</h3>
+<ul>
+<li>Turn a specific streetlight on/off 🌃</li>
+<li>Dim a specific streetlight 😎</li>
+<li>Receive real-time information about environmental lighting conditions 📈</li>
+</ul>
+
+  </div>
+
+
+  <div class="leading-normal mb-4">
+    
+  </div>
+</div>
+
+
+
+<a name="servers"></a>
+<div class="center-block p-8">
+
+  <h2 class="mb-4">Servers</h2>
+
+  
+    <div class="shadow bg-gray-200 mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >test.mosquitto.org:{port}</span>
+
+
+            
+            <span class="bg-teal-500 font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">mqtt</span>
+            
+          </div>
+          <div class="text-xs text-gray-600">
+            <p>Test broker</p>
+
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+            <div class="leading-normal">
+              <span class="font-bold no-underline text-gray-600 text-xs uppercase">port:</span>
+              <span class="text-xs">Secure connection (TLS) is available through port 8883.</span>
+              <div class="inline-block">
+                
+                <span class="bg-indigo-700 font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">ENUM: 1883, 8883</span>
+                
+                
+                <span class="bg-indigo-700 font-bold no-underline text-white rounded ml-2"
+                  style="height: 20px;font-size: 11px;padding: 3px;">DEFAULT: 1883</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      
+
+      
+        <h5 class="text-sm text-gray-500 mt-1">Security:</h5>
+        <ul class="list-reset">
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-gray-600 text-xs uppercase mr-1">
+                
+                API key:
+                
+                
+                
+                
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Provide your API key as the user and leave the password empty.</p>
+</span>
+              
+
+              
+
+              
+                <span class="font-bold no-underline bg-blue-400 text-white text-xs uppercase rounded"
+                  style="height: 20px;font-size: 11px;padding: 3px;">In: user</span>
+              
+
+              
+
+              
+
+              
+
+              
+            </li>
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-gray-600 text-xs uppercase mr-1">
+                
+                
+                OAuth2:
+                
+                
+                
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2"><p>Flows to support OAuth 2.0</p>
+</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+                <div class="px-4 py-2 ml-4 mb-3 border border-gray-400 bg-gray-200 rounded">
+                  <div>
+                    <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Flow:</span>
+                    <span class="text-gray-600 text-xs font-normal capitalize">
+                      
+                        Implicit
+                      
+                    </span>
+                  </div>
+
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Auth URL:</span>
+                      <a class="text-gray-600 text-xs font-normal" href="https://authserver.example/auth" target="_blank">https://authserver.example/auth</a>
+                    </div>
+                  
+                  
+                  
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Scopes:</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to switch lights on">streetlights:on</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to switch lights off">streetlights:off</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to dim the lights">streetlights:dim</span>
+                      
+                    </div>
+                  
+
+                </div>
+              
+                <div class="px-4 py-2 ml-4 mb-3 border border-gray-400 bg-gray-200 rounded">
+                  <div>
+                    <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Flow:</span>
+                    <span class="text-gray-600 text-xs font-normal capitalize">
+                      
+                        Password
+                      
+                    </span>
+                  </div>
+
+                  
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Token URL:</span>
+                      <a class="text-gray-600 text-xs font-normal" href="https://authserver.example/token"
+                        target="_blank">https://authserver.example/token</a>
+                    </div>
+                  
+                  
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Scopes:</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to switch lights on">streetlights:on</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to switch lights off">streetlights:off</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to dim the lights">streetlights:dim</span>
+                      
+                    </div>
+                  
+
+                </div>
+              
+                <div class="px-4 py-2 ml-4 mb-3 border border-gray-400 bg-gray-200 rounded">
+                  <div>
+                    <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Flow:</span>
+                    <span class="text-gray-600 text-xs font-normal capitalize">
+                      
+                        Client Credentials
+                      
+                    </span>
+                  </div>
+
+                  
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Token URL:</span>
+                      <a class="text-gray-600 text-xs font-normal" href="https://authserver.example/token"
+                        target="_blank">https://authserver.example/token</a>
+                    </div>
+                  
+                  
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Scopes:</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to switch lights on">streetlights:on</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to switch lights off">streetlights:off</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to dim the lights">streetlights:dim</span>
+                      
+                    </div>
+                  
+
+                </div>
+              
+                <div class="px-4 py-2 ml-4 mb-3 border border-gray-400 bg-gray-200 rounded">
+                  <div>
+                    <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Flow:</span>
+                    <span class="text-gray-600 text-xs font-normal capitalize">
+                      
+                        Authorization Code
+                      
+                    </span>
+                  </div>
+
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Auth URL:</span>
+                      <a class="text-gray-600 text-xs font-normal" href="https://authserver.example/auth" target="_blank">https://authserver.example/auth</a>
+                    </div>
+                  
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Token URL:</span>
+                      <a class="text-gray-600 text-xs font-normal" href="https://authserver.example/token"
+                        target="_blank">https://authserver.example/token</a>
+                    </div>
+                  
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Refresh URL:</span>
+                      <a class="text-gray-600 text-xs font-normal" href="https://authserver.example/refresh"
+                        target="_blank">https://authserver.example/refresh</a>
+                    </div>
+                  
+                  
+                    <div>
+                      <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Scopes:</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to switch lights on">streetlights:on</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to switch lights off">streetlights:off</span>
+                      
+                        <span class="font-bold no-underline bg-indigo-400 text-white text-xs rounded"
+                          style="height: 20px;padding: 3px;" title="Ability to dim the lights">streetlights:dim</span>
+                      
+                    </div>
+                  
+
+                </div>
+              
+            </li>
+          
+            <li>
+              
+
+              <span class="font-bold no-underline text-gray-600 text-xs uppercase mr-1">
+                
+                
+                
+                Open ID:
+                
+                
+                
+                
+                
+                
+                
+              </span>
+
+              
+                <span class="text-xs mr-2 italic text-gray-600">No description</span>
+              
+
+              
+
+              
+
+              
+
+              
+
+              
+                <div class="px-4 py-2 ml-4 mb-3 border border-gray-400 bg-gray-200 rounded">
+                  <div>
+                    <span class="text-xs font-bold text-gray-600 mt-1 mr-1 uppercase">Connect URL:</span>
+                    <a class="text-gray-600 text-xs font-normal" href="https://authserver.example/.well-known"
+                      target="_blank">https://authserver.example/.well-known</a>
+                  </div>
+                </div>
+
+              
+
+              
+            </li>
+          
+        </ul>
+      
+    </div>
+  
+
+</div>
+
+
+
+
+
+<a name="operations"></a>
+<h2 class="mb-4 ml-8">Operations</h2>
+
+
+  <div class="responsive-container">
+    
+      
+
+<a name="operation-publish-smartylighting/streetlights/1/0/event/{streetlightId}/lighting/measured"></a>
+<div class="center-block p-8">
+  <div class="operation pt-8 pb-8">
+    <h3 class="font-mono text-base">
+      
+      <span class="font-mono border border-blue-500 text-blue-500 uppercase p-1 rounded" title="Publish">Pub</span>
+      
+      
+      
+<span class="string-chunk" >smartylighting/streetlights/1/0/event/{streetlightId}/lighting/measured</span>
+
+    </h3>
+
+    <div class="mt-4 mb-4 markdown"><p>The topic on which measured values may be produced and consumed.</p>
+</div>
+
+    <p class="text-gray-500 text-sm">Inform about environmental lighting conditions of a particular streetlight.</p>
+    <div class="mt-4 mb-4 markdown"></div>
+
+
+
+    
+    <div class="mt-2">
+        <div class="is-open">
+          <div class="js-prop cursor-pointer py-2 flex property">
+            <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+              <span class="text" style="word-break: break-word;">Parameters</span>
+              <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
+                <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+              </svg>
+            </div>
+          </div>
+          <div class="children bg-gray-200 p-4 rounded">
+            <div class="bg-gray-200 pr-8 rounded">
+              
+                
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >streetlightId</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >streetlightId</span
+        >
+          
+        <div class="text-red-600 text-xs">required</div>
+         
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>The ID of the streetlight.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+    
+    <p>Accepts the following message:</p>
+    
+
+<div class="bg-gray-200 rounded p-4 mt-2">
+  <div class="text-sm text-gray-700 mb-2">
+    
+    
+      Light measured
+      <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2">lightMeasured</span>
+    
+  </div>
+  <p class="text-gray-600 text-sm">Inform about environmental lighting conditions of a particular streetlight.</p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="is-open">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Payload</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >lightMeasuredPayload</span
+        >
+         
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >lumens</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+                     
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Light intensity measured in lumens.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+      
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >sentAt</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >sentAt</span
+        >
+           
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+            
+            <span
+              class="bg-yellow-600 font-bold no-underline text-black rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              >date-time</span
+            >
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+    <div class="mt-4">
+      
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="is-open">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Headers</span
+        >
+          
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >my-app-header</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+    </div>
+  
+</div>
+
+
+    
+
+    
+
+<div class="mt-4">
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div class="right-block p-8">
+  <h4 class="text-lg text-white mb-4">Examples</h4>
+
+  
+  
+
+<form>
+  <h5 class="examples-uid text-orange-600 mt-4">lightMeasured</h5>
+  
+    <div class="payload-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-gray-200 text-sm border rounded focus:outline-none cursor-pointer">Payload</span>
+        
+          <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children payload-examples mt-4">
+        
+        <pre class="hljs mb-4 border border-gray-800 rounded"><code>{
+  "lumens": 0,
+  "sentAt": "2019-08-24T14:15:22Z"
+}</code></pre>
+        <h6 class="text-xs font-bold text-gray-700 italic">This example has been generated automatically.</h6>
+        
+      </div>
+    </div>
+  
+
+  
+    <div class="headers-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-gray-200 text-sm border rounded focus:outline-none cursor-pointer">Headers</span>
+        
+          <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children headers-examples mt-4">
+        
+        <pre class="hljs mb-4 border border-gray-800 rounded"><code>{
+  "my-app-header": 0
+}</code></pre>
+        <h6 class="text-xs font-bold text-gray-700 italic">This example has been generated automatically.</h6>
+        
+      </div>
+    </div>
+  
+</form>
+
+
+  
+</div>
+
+
+
+    
+  </div>
+  <div class="responsive-container">
+    
+  </div>
+
+  <div class="responsive-container">
+    
+  </div>
+  <div class="responsive-container">
+    
+      
+
+<a name="operation-subscribe-smartylighting/streetlights/1/0/action/{streetlightId}/turn/on"></a>
+<div class="center-block p-8">
+  <div class="operation pt-8 pb-8">
+    <h3 class="font-mono text-base">
+      
+      
+      <span class="font-mono border border-green-600 text-green-600 uppercase p-1 rounded"
+        title="Subscribe">Sub</span>
+      
+      
+<span class="string-chunk" >smartylighting/streetlights/1/0/action/{streetlightId}/turn/on</span>
+
+    </h3>
+
+    <div class="mt-4 mb-4 markdown"></div>
+
+    <p class="text-gray-500 text-sm"></p>
+    <div class="mt-4 mb-4 markdown"></div>
+
+
+
+    
+    <div class="mt-2">
+        <div class="is-open">
+          <div class="js-prop cursor-pointer py-2 flex property">
+            <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+              <span class="text" style="word-break: break-word;">Parameters</span>
+              <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
+                <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+              </svg>
+            </div>
+          </div>
+          <div class="children bg-gray-200 p-4 rounded">
+            <div class="bg-gray-200 pr-8 rounded">
+              
+                
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >streetlightId</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >streetlightId</span
+        >
+          
+        <div class="text-red-600 text-xs">required</div>
+         
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>The ID of the streetlight.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+    
+    <p>Accepts the following message:</p>
+    
+
+<div class="bg-gray-200 rounded p-4 mt-2">
+  <div class="text-sm text-gray-700 mb-2">
+    
+    
+      Turn on/off
+      <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2">turnOnOff</span>
+    
+  </div>
+  <p class="text-gray-600 text-sm">Command a particular streetlight to turn the lights on or off.</p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="is-open">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Payload</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >turnOnOffPayload</span
+        >
+         
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >command</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Whether to turn on or off the light.</p>
+</div>
+
+   
+        <div class="text-xs">
+          Enum: 
+          <span class="border text-orange-600 rounded ml-1 py-0 px-2"
+            >"on"</span
+          >
+          
+          <span class="border text-orange-600 rounded ml-1 py-0 px-2"
+            >"off"</span
+          >
+          
+        </div>
+         
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+      
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >sentAt</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >sentAt</span
+        >
+           
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+            
+            <span
+              class="bg-yellow-600 font-bold no-underline text-black rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              >date-time</span
+            >
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+    <div class="mt-4">
+      
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="is-open">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Headers</span
+        >
+          
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >my-app-header</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+    </div>
+  
+</div>
+
+
+    
+
+    
+
+<div class="mt-4">
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div class="right-block p-8">
+  <h4 class="text-lg text-white mb-4">Examples</h4>
+
+  
+  
+
+<form>
+  <h5 class="examples-uid text-orange-600 mt-4">turnOnOff</h5>
+  
+    <div class="payload-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-gray-200 text-sm border rounded focus:outline-none cursor-pointer">Payload</span>
+        
+          <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children payload-examples mt-4">
+        
+        <pre class="hljs mb-4 border border-gray-800 rounded"><code>{
+  "command": "on",
+  "sentAt": "2019-08-24T14:15:22Z"
+}</code></pre>
+        <h6 class="text-xs font-bold text-gray-700 italic">This example has been generated automatically.</h6>
+        
+      </div>
+    </div>
+  
+
+  
+    <div class="headers-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-gray-200 text-sm border rounded focus:outline-none cursor-pointer">Headers</span>
+        
+          <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children headers-examples mt-4">
+        
+        <pre class="hljs mb-4 border border-gray-800 rounded"><code>{
+  "my-app-header": 0
+}</code></pre>
+        <h6 class="text-xs font-bold text-gray-700 italic">This example has been generated automatically.</h6>
+        
+      </div>
+    </div>
+  
+</form>
+
+
+  
+</div>
+
+
+
+    
+  </div>
+
+  <div class="responsive-container">
+    
+  </div>
+  <div class="responsive-container">
+    
+      
+
+<a name="operation-subscribe-smartylighting/streetlights/1/0/action/{streetlightId}/turn/off"></a>
+<div class="center-block p-8">
+  <div class="operation pt-8 pb-8">
+    <h3 class="font-mono text-base">
+      
+      
+      <span class="font-mono border border-green-600 text-green-600 uppercase p-1 rounded"
+        title="Subscribe">Sub</span>
+      
+      
+<span class="string-chunk" >smartylighting/streetlights/1/0/action/{streetlightId}/turn/off</span>
+
+    </h3>
+
+    <div class="mt-4 mb-4 markdown"></div>
+
+    <p class="text-gray-500 text-sm"></p>
+    <div class="mt-4 mb-4 markdown"></div>
+
+
+
+    
+    <div class="mt-2">
+        <div class="is-open">
+          <div class="js-prop cursor-pointer py-2 flex property">
+            <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+              <span class="text" style="word-break: break-word;">Parameters</span>
+              <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
+                <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+              </svg>
+            </div>
+          </div>
+          <div class="children bg-gray-200 p-4 rounded">
+            <div class="bg-gray-200 pr-8 rounded">
+              
+                
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >streetlightId</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >streetlightId</span
+        >
+          
+        <div class="text-red-600 text-xs">required</div>
+         
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>The ID of the streetlight.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+    
+    <p>Accepts the following message:</p>
+    
+
+<div class="bg-gray-200 rounded p-4 mt-2">
+  <div class="text-sm text-gray-700 mb-2">
+    
+    
+      Turn on/off
+      <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2">turnOnOff</span>
+    
+  </div>
+  <p class="text-gray-600 text-sm">Command a particular streetlight to turn the lights on or off.</p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="is-open">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Payload</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >turnOnOffPayload</span
+        >
+         
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >command</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Whether to turn on or off the light.</p>
+</div>
+
+   
+        <div class="text-xs">
+          Enum: 
+          <span class="border text-orange-600 rounded ml-1 py-0 px-2"
+            >"on"</span
+          >
+          
+          <span class="border text-orange-600 rounded ml-1 py-0 px-2"
+            >"off"</span
+          >
+          
+        </div>
+         
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+      
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >sentAt</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >sentAt</span
+        >
+           
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+            
+            <span
+              class="bg-yellow-600 font-bold no-underline text-black rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              >date-time</span
+            >
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+    <div class="mt-4">
+      
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="is-open">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Headers</span
+        >
+          
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >my-app-header</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+    </div>
+  
+</div>
+
+
+    
+
+    
+
+<div class="mt-4">
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div class="right-block p-8">
+  <h4 class="text-lg text-white mb-4">Examples</h4>
+
+  
+  
+
+<form>
+  <h5 class="examples-uid text-orange-600 mt-4">turnOnOff</h5>
+  
+    <div class="payload-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-gray-200 text-sm border rounded focus:outline-none cursor-pointer">Payload</span>
+        
+          <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children payload-examples mt-4">
+        
+        <pre class="hljs mb-4 border border-gray-800 rounded"><code>{
+  "command": "on",
+  "sentAt": "2019-08-24T14:15:22Z"
+}</code></pre>
+        <h6 class="text-xs font-bold text-gray-700 italic">This example has been generated automatically.</h6>
+        
+      </div>
+    </div>
+  
+
+  
+    <div class="headers-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-gray-200 text-sm border rounded focus:outline-none cursor-pointer">Headers</span>
+        
+          <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children headers-examples mt-4">
+        
+        <pre class="hljs mb-4 border border-gray-800 rounded"><code>{
+  "my-app-header": 0
+}</code></pre>
+        <h6 class="text-xs font-bold text-gray-700 italic">This example has been generated automatically.</h6>
+        
+      </div>
+    </div>
+  
+</form>
+
+
+  
+</div>
+
+
+
+    
+  </div>
+
+  <div class="responsive-container">
+    
+  </div>
+  <div class="responsive-container">
+    
+      
+
+<a name="operation-subscribe-smartylighting/streetlights/1/0/action/{streetlightId}/dim"></a>
+<div class="center-block p-8">
+  <div class="operation pt-8 pb-8">
+    <h3 class="font-mono text-base">
+      
+      
+      <span class="font-mono border border-green-600 text-green-600 uppercase p-1 rounded"
+        title="Subscribe">Sub</span>
+      
+      
+<span class="string-chunk" >smartylighting/streetlights/1/0/action/{streetlightId}/dim</span>
+
+    </h3>
+
+    <div class="mt-4 mb-4 markdown"></div>
+
+    <p class="text-gray-500 text-sm"></p>
+    <div class="mt-4 mb-4 markdown"></div>
+
+
+
+    
+    <div class="mt-2">
+        <div class="is-open">
+          <div class="js-prop cursor-pointer py-2 flex property">
+            <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+              <span class="text" style="word-break: break-word;">Parameters</span>
+              <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
+                <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+              </svg>
+            </div>
+          </div>
+          <div class="children bg-gray-200 p-4 rounded">
+            <div class="bg-gray-200 pr-8 rounded">
+              
+                
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >streetlightId</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >streetlightId</span
+        >
+          
+        <div class="text-red-600 text-xs">required</div>
+         
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>The ID of the streetlight.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+    
+    <p>Accepts the following message:</p>
+    
+
+<div class="bg-gray-200 rounded p-4 mt-2">
+  <div class="text-sm text-gray-700 mb-2">
+    
+    
+      Dim light
+      <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2">dimLight</span>
+    
+  </div>
+  <p class="text-gray-600 text-sm">Command a particular streetlight to dim the lights.</p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="is-open">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Payload</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >dimLightPayload</span
+        >
+         
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >percentage</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Percentage to which the light should be dimmed to.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+      
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >sentAt</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >sentAt</span
+        >
+           
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+            
+            <span
+              class="bg-yellow-600 font-bold no-underline text-black rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              >date-time</span
+            >
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+    <div class="mt-4">
+      
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="is-open">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Headers</span
+        >
+          
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >my-app-header</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+    </div>
+  
+</div>
+
+
+    
+
+    
+
+<div class="mt-4">
+  
+</div>
+
+
+
+  </div>
+</div>
+
+<div class="right-block p-8">
+  <h4 class="text-lg text-white mb-4">Examples</h4>
+
+  
+  
+
+<form>
+  <h5 class="examples-uid text-orange-600 mt-4">dimLight</h5>
+  
+    <div class="payload-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-gray-200 text-sm border rounded focus:outline-none cursor-pointer">Payload</span>
+        
+          <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children payload-examples mt-4">
+        
+        <pre class="hljs mb-4 border border-gray-800 rounded"><code>{
+  "percentage": 0,
+  "sentAt": "2019-08-24T14:15:22Z"
+}</code></pre>
+        <h6 class="text-xs font-bold text-gray-700 italic">This example has been generated automatically.</h6>
+        
+      </div>
+    </div>
+  
+
+  
+    <div class="headers-examples mb-4 ">
+      <div class="js-prop cursor-pointer  flex property">
+        <span class="px-2 mr-2 text-gray-200 text-sm border rounded focus:outline-none cursor-pointer">Headers</span>
+        
+          <svg class="expand inline align-baseline" version="1.1" viewBox="0 0 24 24" x="0"
+            xmlns="http://www.w3.org/2000/svg" y="0">
+            <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+          </svg>
+        
+      </div>
+      <div class="children headers-examples mt-4">
+        
+        <pre class="hljs mb-4 border border-gray-800 rounded"><code>{
+  "my-app-header": 0
+}</code></pre>
+        <h6 class="text-xs font-bold text-gray-700 italic">This example has been generated automatically.</h6>
+        
+      </div>
+    </div>
+  
+</form>
+
+
+  
+</div>
+
+
+
+    
+  </div>
+
+
+
+
+
+<a name="messages"></a>
+<h2 class="ml-8 mt-4">Messages</h2>
+
+<div class="responsive-container">
+  <div class="center-block p-8">
+    <div class="all-messages pb-8">
+      
+      <a name="message-lightMeasured"></a>
+      
+
+<div class="bg-gray-200 rounded p-4 mt-2">
+  <div class="text-sm text-gray-700 mb-2">
+    
+    <span class="text-gray-700 font-bold mr-2">#1</span>
+    
+    
+      Light measured
+      <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2">lightMeasured</span>
+    
+  </div>
+  <p class="text-gray-600 text-sm">Inform about environmental lighting conditions of a particular streetlight.</p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Payload</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >lightMeasuredPayload</span
+        >
+         
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >lumens</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+                     
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Light intensity measured in lumens.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+      
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >sentAt</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >sentAt</span
+        >
+           
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+            
+            <span
+              class="bg-yellow-600 font-bold no-underline text-black rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              >date-time</span
+            >
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+    <div class="mt-4">
+      
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Headers</span
+        >
+          
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >my-app-header</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+    </div>
+  
+</div>
+
+
+      
+      <a name="message-turnOnOff"></a>
+      
+
+<div class="bg-gray-200 rounded p-4 mt-2">
+  <div class="text-sm text-gray-700 mb-2">
+    
+    <span class="text-gray-700 font-bold mr-2">#2</span>
+    
+    
+      Turn on/off
+      <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2">turnOnOff</span>
+    
+  </div>
+  <p class="text-gray-600 text-sm">Command a particular streetlight to turn the lights on or off.</p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Payload</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >turnOnOffPayload</span
+        >
+         
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >command</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Whether to turn on or off the light.</p>
+</div>
+
+   
+        <div class="text-xs">
+          Enum: 
+          <span class="border text-orange-600 rounded ml-1 py-0 px-2"
+            >"on"</span
+          >
+          
+          <span class="border text-orange-600 rounded ml-1 py-0 px-2"
+            >"off"</span
+          >
+          
+        </div>
+         
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+      
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >sentAt</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >sentAt</span
+        >
+           
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+            
+            <span
+              class="bg-yellow-600 font-bold no-underline text-black rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              >date-time</span
+            >
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+    <div class="mt-4">
+      
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Headers</span
+        >
+          
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >my-app-header</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+    </div>
+  
+</div>
+
+
+      
+      <a name="message-dimLight"></a>
+      
+
+<div class="bg-gray-200 rounded p-4 mt-2">
+  <div class="text-sm text-gray-700 mb-2">
+    
+    <span class="text-gray-700 font-bold mr-2">#3</span>
+    
+    
+      Dim light
+      <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2">dimLight</span>
+    
+  </div>
+  <p class="text-gray-600 text-sm">Command a particular streetlight to dim the lights.</p>
+  
+  
+
+<div class="mt-4">
+  
+</div>
+
+
+
+
+  <div class="mt-4 mb-4 markdown"></div>
+  
+    
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Payload</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >dimLightPayload</span
+        >
+         
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >percentage</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Percentage to which the light should be dimmed to.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+      
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >sentAt</span
+        >
+         
+        <span class="border text-orange-600 rounded text-xs ml-3 py-0 px-2"
+          >sentAt</span
+        >
+           
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+string   
+          <div class="inline-block">
+            
+            <span
+              class="bg-yellow-600 font-bold no-underline text-black rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              >date-time</span
+            >
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+  
+    <div class="mt-4">
+      
+<div>
+  
+
+<div
+  class="bg-gray-200  rounded"
+>
+  <div class="">
+    <div
+      class="js-prop cursor-pointer py-2 flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >Headers</span
+        >
+          
+        <svg
+          class="expand inline align-baseline"
+          version="1.1"
+          viewBox="0 0 24 24"
+          x="0"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0"
+        >
+          <polygon
+            points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "
+          ></polygon>
+        </svg>
+          
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+object   
+          <div class="inline-block">
+                      
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+    <div
+      class="children bg-gray-100 py-4 rounded"
+    >
+           
+
+<div
+  class="bg-gray-100 pl-8 pr-8 rounded"
+>
+  <div class="">
+    <div
+      class=" flex property"
+    >
+      <div class="pr-4" style="margin-top: -2px; min-width: 25%">
+        <span
+          class="text-sm"
+          style="word-break: break-word"
+          >my-app-header</span
+        >
+            
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal-500 font-bold">
+          
+integer   
+          <div class="inline-block">
+             
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At least 0"
+              >>= 0</span
+            >
+              
+            <span
+              class="bg-purple-600 font-bold no-underline text-white rounded lowercase ml-2"
+              style="height: 20px; font-size: 11px; padding: 3px"
+              title="At most 100"
+              ><= 100</span
+            >
+                   
+          </div>
+        </div>
+
+        
+
+<div class="text-sm markdown"></div>
+
+    
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+        
+      <p class="pl-6 mb-2 mt-4 text-xs text-gray-700">
+        Additional properties are allowed.
+      </p>
+        
+       
+    </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+    </div>
+  
+</div>
+
+
+      
+    </div>
+  </div>
+</div>
+
+
+    </div>
+    <div class="examples-panel absolute top-0 right-0 bottom-0"></div>
+  </div>
+  
+  <script src="js/highlight.min.js" type="application/javascript"></script>
+  <script src="js/main.js" type="application/javascript"></script>
+  
+</body>
+</html>
